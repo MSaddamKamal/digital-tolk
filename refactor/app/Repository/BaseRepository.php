@@ -83,9 +83,7 @@ class BaseRepository
      */
     public function findBySlug($slug)
     {
-
         return $this->model->where('slug', $slug)->first();
-
     }
 
     /**
@@ -195,7 +193,6 @@ class BaseRepository
         }
 
         if ($validator->fails()) {
-            return false;
             throw (new ValidationException)->setValidator($validator);
         }
 

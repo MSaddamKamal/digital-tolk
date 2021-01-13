@@ -83,9 +83,7 @@ class BaseRepository
      */
     public function findBySlug($slug)
     {
-
         return $this->model->where('slug', $slug)->first();
-
     }
 
     /**

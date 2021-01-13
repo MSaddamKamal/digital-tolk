@@ -1,4 +1,5 @@
 <?php
+
 namespace DTApi\Helpers;
 
 use Carbon\Carbon;
@@ -20,20 +21,19 @@ class TeHelper
     public static function getUsermeta($user_id, $key = false)
     {
         return $user = UserMeta::where('user_id', $user_id)->first()->$key;
-        if (!$key)
-            return $user->usermeta()->get()->all();
-        else {
-            $meta = $user->usermeta()->where('key', '=', $key)->get()->first();
-            if ($meta)
-                return $meta->value;
-            else return '';
-        }
+//        if (!$key)
+//            return $user->usermeta()->get()->all();
+//        else {
+//            $meta = $user->usermeta()->where('key', '=', $key)->get()->first();
+//            if ($meta)
+//                return $meta->value;
+//            else return '';
+//        }
     }
 
     public static function convertJobIdsInObjs($jobs_ids)
     {
-
-        $jobs = array();
+        $jobs = [];
         foreach ($jobs_ids as $job_obj) {
             $jobs[] = Job::findOrFail($job_obj->id);
         }
@@ -44,13 +44,11 @@ class TeHelper
     {
         $due_time = Carbon::parse($due_time);
         $created_at = Carbon::parse($created_at);
-
         $difference = $due_time->diffInHours($created_at);
 
-
-        if($difference <= 90)
+        if ($difference <= 90) {
             $time = $due_time;
-        elseif ($difference <= 24) {
+        } elseif ($difference <= 24) {
             $time = $created_at->addMinutes(90);
         } elseif ($difference > 24 && $difference <= 72) {
             $time = $created_at->addHours(16);
