@@ -1,7 +1,7 @@
 # Comments On Code
 
 Some functions are not properly handled the functions should return something in consistent format otherwise maintainability can be hard.
-for example in book repository since the changeStatus function will not return array if the requested status and  old status are same so the error of undefined index can occur therefore try refactoring the changeStatus function accordingly otherwise if you don't want to refactor your code then the other way round in what i did in the code see comments.
+for example in book repository since the changeStatus function will not return array if the requested status and  old status are same so the error of undefined index can occur therefore try refactoring the changeStatus function accordingly otherwise if you don't want to refactor your code then the other way round is what i did in the code see comments.
 
 Also some functions have logical error. for example if in ignoreExpired of book repository fails to save the job even then it will return true or throw exception, also some functions in helper file return value in the starting and after that the other logics are written which is surely not be executed.
 index function of booking controller is not properly handled , if the conditions are not met the response variable will be undefined throwing error.
